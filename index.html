@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Anime Picker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+           margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px 60px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+        button:hover {
+      background-color: #e05245;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(224,82,69,0.8);
+    }
+    }
+    .anime-box {
+      background: rgba(43, 43, 43, 0.85);
+      padding: 24px;
+      margin-top: 40px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+    .anime-box img {
+          max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+    }
+    .anime-box h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-shadow: 0 0 5px rgba(255,111,97,0.9);
+    }
+    .anime-box p {
+      margin: 10px 0;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+    .loading {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #ccc;
+      min-height: 30px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      user-select: none;
+      background: #2b2b2b;
+      border-radius: 8px;
+      padding: 10px 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      min-width: 150px;
+      color: #eee;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #2b2b2b;
+      padding: 15px;
+      border-radius: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+      z-index: 1000;
+      width: 220px;
+      color: #eee;
+      text-align: left;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content label {
+      display: inline-block;
+      margin: 5px 8px 5px 0;
+      cursor: pointer;
+      user-select: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1.5px solid #ff6f61;
+      font-weight: 500;
+      transition: background-color 0.3s, color 0.3s;
+      font-size: 0.9rem;
+    }
+    select {
+      width: 50%;
+      padding: 8px 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      background-color: #444;
+      color: #eee;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    select:hover, select:focus {
+      background-color: #555;
+      outline: none;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Anime Picker</h1>
+
+  <!-- Genre Dropdown -->
+  <div class="dropdown">
+    <button>Select any 2 Genre</button>
+    <div class="dropdown-content" id="genreDropdown">
+      <label><input type="checkbox" value="1"> Action</label>
+      <label><input type="checkbox" value="2"> Adventure</label>
+      <label><input type="checkbox" value="4"> Comedy</label>
+      <label><input type="checkbox" value="8"> Drama</label>
+      <label><input type="checkbox" value="10"> Fantasy</label>
+      <label><input type="checkbox" value="14"> Horror</label>
+      <label><input type="checkbox" value="22"> Romance</label>
+      <label><input type="checkbox" value="24"> Sci-Fi</label>
+      <label><input type="checkbox" value="62"> Isekai</label>
+    </div>
+  </div>
+
+  <!-- Score Filter -->
+  <select id="scoreSelect">
+    <option value="">Any Score</option>
+    <option value="6">6+</option>
+    <option value="7">7+</option>
+    <option value="8">8+</option>
+    <option value="9">9+</option>
+  </select>
+
+  <button onclick="getRandomAnime()">Pick Random Anime</button>
+  <div id="animeBox" class="anime-box" style="display:none;"></div>
+  <div id="loading" class="loading"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
