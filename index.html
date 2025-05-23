@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Anime Picker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #232526, #414345);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 40px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #e05245;
+    }
+    .anime-box {
+      background: #2b2b2b;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .anime-box img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .anime-box h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+    .anime-box p {
+      margin: 8px 0;
+    }
+    .loading {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Random Anime Picker</h1>
+  <button onclick="getRandomAnime()">Pick Random Anime</button>
+  <div id="animeBox" class="anime-box" style="display:none;"></div>
+  <div id="loading" class="loading"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
