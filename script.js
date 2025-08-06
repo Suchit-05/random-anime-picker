@@ -38,7 +38,9 @@ async function getRandomAnime() {
       if (animeList.length > 0) break; // Found anime, break out of loop
     } catch (e) {
       console.error("Fetch error:", e);
-      break; // Stop retrying on fetch error
+      loadingText.innerText = "Failed to fetch anime. Try again.";
+      noteText.style.display = "block";
+      return;
     }
     attempts++;
   }
